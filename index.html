@@ -24,7 +24,7 @@
                 target: document.querySelector('#camera')    // Or '#yourElement' (optional)
             },
             decoder: {
-                readers: ["code_128_reader"]
+                readers: ['ean_reader', 'code_128_reader', 'ean_8_reader', 'code_39_reader', 'code_39_vin_reader', 'codabar_reader', 'upc_reader', 'upc_e_reader', 'i2of5_reader']
             }
         }, function (err) {
             if (err) {
@@ -36,6 +36,7 @@
         });
 
         Quagga.onDetected(function (data) {
+            console.log(data)
             console.log(data.codeResult.code);
             document.querySelector('#resultado').innerText = data.codeResult.code;
         });
